@@ -20,11 +20,11 @@ jobs:
       - run: npx capacitor-assets generate --android
         working-directory: clientdesk
       - run: npx cap sync android
+        working-directory: clientdesk
       - run: node scripts/patch-android.js
         working-directory: clientdesk
         env:
           VERSION_CODE: ${{ github.run_number }}
-        working-directory: clientdesk
       - run: ./gradlew assembleDebug
         working-directory: clientdesk/android
       - uses: actions/upload-artifact@v4
